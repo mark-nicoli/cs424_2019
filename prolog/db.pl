@@ -1,3 +1,4 @@
+
 male(albert).
 male(bob).
 male(bill).
@@ -58,3 +59,31 @@ get_cust_bal(FName, LName) :-
 	customer(Fname, LName, Bal),
 	format('~w ~w owes us $~2f ~n', [FName, LName, Bal]).
 
+related(X, Y) :-
+	parent(X, Y).
+
+related2(X, Y) :-
+	parent(X, Z),
+	related(Z,Y).
+
+count_to_10(10) :- write(10), nl.
+
+count_to_10(X) :-
+	write(X), nl,
+	Y is X + 1,
+	count_to_10(Y).
+
+count_down(Low, High) :-
+	between(Low, High, Y),
+	Z is High-Y,
+	write(Z), nl.
+
+count_up(Low, High) :-
+	between(Low, High, Y),
+	Z is Y+Low,
+	write(Z), nl.
+
+ write_list([]).
+ write_list([Head|Tail]) :-
+ 	write(Head), nl,
+ 	write_list(Tail).
