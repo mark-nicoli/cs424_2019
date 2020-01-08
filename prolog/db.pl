@@ -90,8 +90,8 @@ count_up(Low, High) :-
 
 %2019 exam paper question 4
 
-runs([]).
-runs(_|[]).
+run([]).
+run(_|[]).
 runs([X|Tail]) :-
 	checkNext(X, Tail),
 	runs(Tail).
@@ -101,6 +101,10 @@ checkNext(X, [Y|Ys]) :-
 
 checkNext1(Y, [H|T]) :-
 	Y == H.
+
+runs([]).
+runs([X,X|Y]) :- runs(Y).
+runs([X,X,X|Y]) :- runs([X,X|Y]).
 
 %2018 exam paper question 4
 %January
