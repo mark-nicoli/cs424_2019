@@ -24,7 +24,7 @@ parent(alice, bill).
 parent(bob, carl).
 parent(bob, charlie).
 
-get_grandparent :- 
+get_grandparent :-
 	parent(X, carl),
 	parent(X, charlie),
 	format('~w ~s grandparent~n', [X,"is the"]).
@@ -37,7 +37,7 @@ stabs(tybalt, mercutio, sword).
 hates(romeo, X) :- stabs(X, mercutio, sword).
 
 
-what_grade(5) :- 
+what_grade(5) :-
 	write('go to playschool').
 
 what_grade(6) :-
@@ -87,3 +87,34 @@ count_up(Low, High) :-
  write_list([Head|Tail]) :-
  	write(Head), nl,
  	write_list(Tail).
+
+%2019 exam paper question 4
+
+runs([]).
+runs(_|[]).
+runs([X|Tail]) :-
+	checkNext(X, Tail),
+	runs(Tail).
+
+checkNext(X, [Y|Ys]) :-
+	X == Y.
+
+checkNext1(Y, [H|T]) :-
+	Y == H.
+
+%2018 exam paper question 4
+%January
+mul(List1,List2,List3) :-
+	length(List1,X),
+	length(List2,Y),
+	length(List3,Z),
+	X*Y =:= Z.
+
+%autumn
+scissor([X|Tlist], X, [], Tlist).
+scissor([Hlist1|Tlist1], X, [Hlist1|U], List2) :-
+	scissor(Tlist1, X, U, List2).
+
+scissors(List1, C, List2, List3) :-
+	append(List2, [C|List3], List),
+	List=List1.
