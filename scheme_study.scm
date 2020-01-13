@@ -51,3 +51,67 @@
   (if (null? list)
       start
       (fn (car list) (my-foldr fn start (cdr list)))))
+
+;functions in functions
+(define (sum-of-squares x y)
+  (define(square a)
+    (* a a))
+  (define(add b c)
+    (+ b c))
+  (add (square x) (square y)))
+
+;printing and what-not/ using outer symbols (definitions)
+(define (assert-equals a b)
+
+  (define (print-error)
+    (display a)
+    (display " is not equal to ")
+    (display b)
+    (newline))
+
+  (if (not (equal? a b)) (print-error) null))
+    
+;recursion in scheme
+;factorial
+(define (fact n)
+  (if (= n 0)   ;base case
+      1
+      (* n (fact (- n 1)))))
+
+;fibonacci
+(define (fib n)
+  (if (<= n 2)
+  1
+  (+ (fib(- n 1))
+     (fib(- n 2)))))
+
+;map implementation using recursion
+(define (my-map-rec fn list) ;returns absolute value of all nums in list
+  (if (null? list)
+      null
+      (cons (fn (car list))    ;cons is used to create lists
+            (my-map-rec fn (cdr list)))))
+      
+;tail call optimisation : - previous stack frame is no longer needed
+;                           throw it away
+
+;quotation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
