@@ -35,6 +35,7 @@
 
 
 ;implement map
+; fn is a function we aree looking to apply to list
 (define (my-map fn list)
   (if (null? list)
       null
@@ -43,10 +44,13 @@
 
 (define qux (list 1 2 3 4))
 
+;foldr takes 3 arguments ( + startNum list)
+;foldr then fold up the list and adds the numbers to startNum and combines them
+
 (foldr + 0 qux) ;add up the elements of the qux starting with 0
 ; i.e (0+4) + (0+3)....
 
-;implemeent foldr
+;implement foldr
 (define (my-foldr fn start list)
   (if (null? list)
       start
@@ -95,7 +99,10 @@
 ;tail call optimisation : - previous stack frame is no longer needed
 ;                           throw it away
 
-;quotation
+;lambda functions - anonymous functions
+
+
+
 
 
 
