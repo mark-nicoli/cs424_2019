@@ -3,8 +3,6 @@
 
 (cons (cons 1 2) 3)
 
-(define foo (cons 1 2))
-
 (cons 1 null)
 
 (define bar (cons 1 null))
@@ -100,15 +98,27 @@
 ;                           throw it away
 
 ;lambda functions - anonymous functions
+;lambda defines a function
+;used to create procedures
+(lambda (x y) (+ x y)) 
 
+(define s (lambda (x y) (+ x y))) ;calling s with 2 number arguments returns the result of adding them up
 
+;own implementation of cons car and cdr
+(define (mcons a b)
+  (lambda (cmd)
+    (if (equal? cmd "car")
+        a
+        b)))
 
+(define (mcar pair) (pair "car"))
+(define (mcdr pair) (pair "cdr"))
 
+(define foo (mcons 1 2))
 
+(mcar foo) ;returns 1
 
-
-
-
+(mcdr foo) ;returns 2
 
 
 
