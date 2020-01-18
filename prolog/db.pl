@@ -88,33 +88,22 @@ count_up(Low, High) :-
  	write(Head), nl,
  	write_list(Tail).
 
-%2019 exam paper question 4
-
-run([]).
-run(_|[]).
-runs([X|Tail]) :-
-	checkNext(X, Tail),
-	runs(Tail).
-
-checkNext(X, [Y|Ys]) :-
-	X == Y.
-
-checkNext1(Y, [H|T]) :-
-	Y == H.
+%2019 exam paper question 4 
 
 runs([]).
 runs([X,X|Y]) :- runs(Y).
 runs([X,X,X|Y]) :- runs([X,X|Y]).
 
-%2018 exam paper question 4
-%January
+% 2018 exam paper question 4
+% January 
+
 mul(List1,List2,List3) :-
 	length(List1,X),
 	length(List2,Y),
 	length(List3,Z),
 	X*Y =:= Z.
 
-%autumn
+% 2018 autumn 
 scissor([X|Tlist], X, [], Tlist).
 scissor([Hlist1|Tlist1], X, [Hlist1|U], List2) :-
 	scissor(Tlist1, X, U, List2).
